@@ -13,17 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import include, path
+
 from rest_framework.routers import SimpleRouter
 
-from picfile.views import FileViewSet
-
+# from picfile.views import FileViewSet
+from picfile.views import FileAPIView
 
 v1_router = SimpleRouter()
-v1_router.register('files', FileViewSet)
-v1_router.register('upload', FileViewSet)
-
+# v1_router.register('files', FileViewSet)
+v1_router.register('upload', FileAPIView.as_view(), basename='upload')
 
 urlpatterns = [
     path('', include(v1_router.urls)),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
