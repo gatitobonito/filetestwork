@@ -15,19 +15,21 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import include, path
+from django.urls import include, path, re_path
 
 from rest_framework.routers import SimpleRouter
 
-# from picfile.views import FileViewSet
-from picfile.views import FileAPIView
+from picfile.views import FileViewSet, UploadViewSet, file_upload
 
-v1_router = SimpleRouter()
+# v1_router = SimpleRouter()
+
 # v1_router.register('files', FileViewSet)
-v1_router.register('upload', FileAPIView.as_view(), basename='upload')
+# v1_router.register('upload', UploadViewSet)
+# v1_router.register('upload', FileAPIView.as_view(), basename='upload')
 
 urlpatterns = [
     path('', include(v1_router.urls)),
+    # re_path(r'^upload1/$', file_upload, name='file_upload'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
