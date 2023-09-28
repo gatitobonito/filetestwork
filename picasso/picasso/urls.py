@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import include, path, re_path
+from django.urls import include, path
 
 from rest_framework.routers import SimpleRouter
 
@@ -28,7 +28,7 @@ from picfile.views import FileViewSet, UploadViewSet, file_upload
 # v1_router.register('upload', FileAPIView.as_view(), basename='upload')
 
 urlpatterns = [
-    path('', include(v1_router.urls)),
+    path('', include('picfile.urls')),
     # re_path(r'^upload1/$', file_upload, name='file_upload'),
 ]
 
