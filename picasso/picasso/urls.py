@@ -19,7 +19,7 @@ from django.urls import include, path
 
 from rest_framework.routers import SimpleRouter
 
-from picfile.views import FileViewSet, UploadViewSet, file_upload
+# from picfile.views import FileViewSet, UploadViewSet, file_upload
 
 # v1_router = SimpleRouter()
 

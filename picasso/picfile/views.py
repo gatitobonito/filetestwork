@@ -7,18 +7,19 @@ from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render
 from django.http import HttpResponse
-# from .tasks import upload
+from .tasks import upload
 
 
 from .models import File
 
 from .serializers import FileSerializer
 
+
 def async_job(request):
-    # local_path = '/home/ruslan/repos/snippets/async_python/django_celery/uploader/sample.mp4'
-    # path = 'celery-videos/sample.mp4'
-    #
-    # upload.apply_async(args=[local_path, path], ignore_result=True)
+    local_path = 'F://Dev/Picasso/picasso/picfile/sample.mp4'
+    path = 'celery-videos/sample.mp4'
+
+    upload.apply_async(args=[local_path, path], ignore_result=True)
 
     return HttpResponse('Start uploading...')
 
